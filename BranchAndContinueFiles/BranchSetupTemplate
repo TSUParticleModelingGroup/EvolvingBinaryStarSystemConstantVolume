@@ -1,0 +1,64 @@
+Do not use the equal sign in your coments because that is what the program ques on to read.
+Our base input units are kilograms, kilometers and seconds. These will be put into our run units in the program. 
+The mass of the Sun is 1.989e30 kilograms
+The diameter of the sun is 1.391020e6 kilometers
+The Universal gravitational constant G is 6.67408e-20 kilometersE3*kilogramsE-1*secondsE-2
+Make sure these are the same values stored in the binaryStarCommonDefine.h file!
+To get a circular orbit with the same size masses set the same distance r away from the origin 
+you need the velosities to be 0.5*sqrt(G*M/r). 
+So 0.5*sqrt(G*MassSun) is 1.821726e5 just multiply this by the 1/sqrt(r) to get the a circular velosity.
+
+Branch positions of the stars in kilometers from the origin:
+
+BranchPosition1.x = 3.0e6;
+BranchPosition1.y = 0.0;
+BranchPosition1.z = 0.0;
+
+BranchPosition2.x = -3.e6;
+BranchPosition2.y = 0.0;
+BranchPosition2.z = 0.0;
+
+Branch velocities of the stars in kilometers per second:
+
+BranchVelocity1.x =  0.0;
+BranchVelocity1.y =  -105.2;
+BranchVelocity1.z =  0.0;
+
+BranchVelocity2.x =  0.0;
+BranchVelocity2.y =  105.2;
+BranchVelocity2.z =  0.0;
+
+The time parameters are in days (24 hour periods):
+
+BranchRunTime = 3.0;
+
+Time when the growth of the star starts.
+
+GrowthStartTime1 = 0.0;
+
+Time when the growth of the star stops.
+
+GrowthStopTime1 = 0.0;
+
+The rate to grow the push back function.
+
+PercentForceIncrease1 = 0.0;
+
+GrowthStartTime2 = 0.0;
+
+Time when the growth of the star stops.
+
+GrowthStopTime2 = 0.0;
+
+The rate to grow the push back function.
+
+PercentForceIncrease2 = 0.0;
+
+
+The iterations between writing positions and velosities to a file.
+
+RecordRate = 100;
+
+The iterations between displaying the simulation to the sreen.
+
+DrawRate = 10;

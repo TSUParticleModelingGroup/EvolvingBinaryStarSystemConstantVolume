@@ -1,0 +1,90 @@
+In this file do not use the equal sign in a comment because that is the triger to read an input.
+
+Diameter of stars 1 in fraction of the Sun's diameter: 
+DiameterStar1 = 1.0;
+
+Diameter of the core of stars 1 in fraction of the Sun's Diameter: 
+DiameterCore1 = 0.22;
+
+Diameter of stars 2 in fraction of the Sun's Diameter: 
+DiameterStar2 = 1.0;
+
+Diameter of the core of stars 2 in fraction of the Sun's Diameter: 
+DiameterCore2 = 0.22;
+
+Mass of stars 1 in fraction of the Sun's mass: 
+MassOfStar1 = 1.0;
+
+Mass of the core of stars 1 in fraction of the Sun's mass: 
+MassOfCore1 = 0.33;
+
+Mass of stars 2 in fraction of the Sun's mass: 
+MassOfStar2 = 1.0;
+
+Mass of the core of stars 2 in fraction of the Sun's mass: 
+MassOfCore2 = 0.33;
+
+The total number of elements used in the simulation 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288: should be a power of 2.
+NumberOfElements = 512;
+
+Initial spin direction vectors and angular velocity in revolutions per hour of the Star 1:
+InitialSpin1.x = 0.0;
+InitialSpin1.y = 0.0;
+InitialSpin1.z = 1.0;
+InitialSpin1.w = 0.1;
+
+Initial spin direction vectors and angular velocity in revolutions per hour of the Star 2:
+InitialSpin2.x = 0.0;
+InitialSpin2.y = 0.0;
+InitialSpin2.z = 1.0;
+InitialSpin2.w = 0.1;
+
+Starting point for the Plasma presure. This will be in units of kilograms*kilometersE-1*secondE-2.
+Typical values (5.8e13 if n is 1024), (5.25e13 if n is 16384), (4.83e13 if n is 32768), (4.49e13 if n is 65536).
+PushBackPlasma1 = 2.0e15;
+PushBackPlasma2 = 2.0e15;
+
+Multiplier on how much past gravity the cores will push back.
+PushBackCoreMult1 = 2.0;
+PushBackCoreMult1 = 2.0;
+
+//How much to reduce the push back when elements are retreating (it is multiplied by the push back strenght).
+CoreCorePushBackReduction = 0.1;
+CorePlasmaPushBackReduction = 0.1;
+PlasmaPlasmaPushBackReduction = 0.1;
+
+The maximum randium speed given to the intially created elements to help remove any bias in the stars create because 
+they were generated on a cube. Speed in kilometers per second.
+MaxInitialPlasmaSpeed = 50;
+
+How many times the Red Giant's volume can grow from what is calculated from 68% packing into the volume of the star.
+RedGiantVolumeGrowth = 1000.0;
+
+Stuff used to take the raw stars from a cube down to a stable star.
+RawStarDampAmount = 50.0;
+RawStarDampTime = 10; //In days.
+RawStarDampLevels = 10;
+RawStarRestTime = 1; //In days
+
+Things to use to adjust the stars volume.
+DiameterTolerance = 0.1; //Percent allowed off the target diameter.
+DiameterAdjustmentSoftener = 0.1;
+DiameterAdjustmentDamp = 5.0;
+DiameterAdjustmentTime = 1; //In days.
+DiameterAdjustmentRestTime = 1; //In days.
+
+How many iteration use to rest the star spin.
+SpinRestTime = 2; //In days.
+
+The time step in hours.
+Dt = 0.02;
+
+Starting zoom factor.
+ZoomFactor = 10.0;
+
+How often you draw to the screen. How many iteration are run between draws.
+DrawRate = 10;
+
+How often to print the time to the terminal in Days.
+PrintTime = 1;
+
