@@ -46,7 +46,7 @@ PushBackPlasma2 = 2.0e15;
 
 Multiplier on how much past gravity the cores will push back.
 PushBackCoreMult1 = 2.0;
-PushBackCoreMult1 = 2.0;
+PushBackCoreMult2 = 2.0;
 
 //How much to reduce the push back when elements are retreating (it is multiplied by the push back strenght).
 CoreCorePushBackReduction = 0.1;
@@ -58,7 +58,7 @@ they were generated on a cube. Speed in kilometers per second.
 MaxInitialPlasmaSpeed = 50;
 
 How many times the Red Giant's volume can grow from what is calculated from 68% packing into the volume of the star.
-RedGiantVolumeGrowth = 1000.0;
+RedGiantVolumeGrowth = 100.0;
 
 Stuff used to take the raw stars from a cube down to a stable star.
 RawStarDampAmount = 50.0;

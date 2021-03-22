@@ -14,7 +14,7 @@ BranchPosition1.x = 3.0e6;
 BranchPosition1.y = 0.0;
 BranchPosition1.z = 0.0;
 
-BranchPosition2.x = -3.e6;
+BranchPosition2.x = -3.0e6;
 BranchPosition2.y = 0.0;
 BranchPosition2.z = 0.0;
 
@@ -53,7 +53,6 @@ GrowthStopTime2 = 0.0;
 The rate to grow the push back function.
 
 PercentForceIncrease2 = 0.0;
-
 
 The iterations between writing positions and velosities to a file.
 
