@@ -230,6 +230,22 @@ void createFolderForNewStars()
 	fclose(fileIn);
 	fclose(fileOut);
 	
+	fileIn = fopen("../MainSourceFiles/Viewer.cu", "rb");
+	if(fileIn == NULL)
+	{
+		printf("\n\n The MainSourceFiles/Viewer.cu file does not exist\n\n");
+		exit(0);
+	}
+	fseek (fileIn , 0 , SEEK_END);
+  	sizeOfFile = ftell(fileIn);
+  	rewind (fileIn);
+  	buffer = (char*)malloc(sizeof(char)*sizeOfFile);
+  	fread (buffer, 1, sizeOfFile, fileIn);
+	fileOut = fopen("MainSourceFiles/Viewer.cu", "wb");
+	fwrite (buffer, 1, sizeOfFile, fileOut);
+	fclose(fileIn);
+	fclose(fileOut);
+	
 	//Executable files
 	fileIn = fopen("../ExecutableFiles/StarBuilder.exe", "rb");
 	if(fileIn == NULL)
@@ -279,6 +295,22 @@ void createFolderForNewStars()
 	fclose(fileIn);
 	fclose(fileOut);
 	
+	fileIn = fopen("../ExecutableFiles/Viewer.exe", "rb");
+	if(fileIn == NULL)
+	{
+		printf("\n\n The ExecutableFiles/Viewer.exe file does not exist\n\n");
+		exit(0);
+	}
+	fseek (fileIn , 0 , SEEK_END);
+  	sizeOfFile = ftell(fileIn);
+  	rewind (fileIn);
+  	buffer = (char*)malloc(sizeof(char)*sizeOfFile);
+  	fread (buffer, 1, sizeOfFile, fileIn);
+	fileOut = fopen("ExecutableFiles/Viewer.exe", "wb");
+	fwrite (buffer, 1, sizeOfFile, fileOut);
+	fclose(fileIn);
+	fclose(fileOut);
+	
 	//Copying files into the main branch folder	
 	fileIn = fopen("../BranchAndContinueFiles/BranchRun", "rb");
 	if(fileIn == NULL)
@@ -313,7 +345,7 @@ void createFolderForNewStars()
 	fclose(fileIn);
 	fclose(fileOut);
 	
-	//Finally copying the continue run script into the ContinueFiles foldes
+	//Finally copying the continue run script and viewer into the ContinueFiles foldes
 	fileIn = fopen("../BranchAndContinueFiles/ContinueRun", "rb");
 	if(fileIn == NULL)
 	{
@@ -329,6 +361,22 @@ void createFolderForNewStars()
 	fwrite (buffer, 1, sizeOfFile, fileOut);
 	fclose(fileIn);
 	fclose(fileOut);
+	
+	fileIn = fopen("../BranchAndContinueFiles/Viewer", "rb");
+	if(fileIn == NULL)
+	{
+		printf("\n\n The BranchAndContinueFiles/Viewer file does not exist\n\n");
+		exit(0);
+	}
+	fseek (fileIn , 0 , SEEK_END);
+  	sizeOfFile = ftell(fileIn);
+  	rewind (fileIn);
+  	buffer = (char*)malloc(sizeof(char)*sizeOfFile);
+  	fread (buffer, 1, sizeOfFile, fileIn);
+	fileOut = fopen("ContinueFiles/Viewer", "wb");
+	fwrite (buffer, 1, sizeOfFile, fileOut);
+	fclose(fileIn);
+	fclose(fileOut);
 
 	free (buffer);
 	
@@ -336,6 +384,7 @@ void createFolderForNewStars()
 	//should only be used in the main folder. This file is only for reference.
 	system("chmod 755 ./ExecutableFiles/StarBranchRun.exe");
 	system("chmod 755 ./ExecutableFiles/StarContinueRun.exe");
+	system("chmod 755 ./ExecutableFiles/Viewer.exe");
 	system("chmod 755 ./BranchRun");
 }
 
@@ -444,6 +493,34 @@ void readBuildParameters()
 		
 		getline(data,name,'=');
 		data >> PrintRate;
+		
+		getline(data,name,'=');
+		data >> Core1Color.x;
+		getline(data,name,'=');
+		data >> Core1Color.y;
+		getline(data,name,'=');
+		data >> Core1Color.z;
+		
+		getline(data,name,'=');
+		data >> Core2Color.x;
+		getline(data,name,'=');
+		data >> Core2Color.y;
+		getline(data,name,'=');
+		data >> Core2Color.z;
+		
+		getline(data,name,'=');
+		data >> Envelope1Color.x;
+		getline(data,name,'=');
+		data >> Envelope1Color.y;
+		getline(data,name,'=');
+		data >> Envelope1Color.z;
+		
+		getline(data,name,'=');
+		data >> Envelope2Color.x;
+		getline(data,name,'=');
+		data >> Envelope2Color.y;
+		getline(data,name,'=');
+		data >> Envelope2Color.z;
 	}
 	else
 	{
@@ -555,6 +632,20 @@ void generateAndSaveRunParameters()
 		fprintf(runParametersFile, "\n Time step Dt = %f", Dt);
 		fprintf(runParametersFile, "\n Zoom factor = %f", ZoomFactor);
 		fprintf(runParametersFile, "\n Print rate = %f", PrintRate);
+		fprintf(runParametersFile, "\n Core1Color.x = %f", Core1Color.x);
+		fprintf(runParametersFile, "\n Core1Color.y = %f", Core1Color.y);
+		fprintf(runParametersFile, "\n Core1Color.z = %f", Core1Color.z);
+		fprintf(runParametersFile, "\n Core2Color.x = %f", Core2Color.x);
+		fprintf(runParametersFile, "\n Core2Color.y = %f", Core2Color.y);
+		fprintf(runParametersFile, "\n Core2Color.z = %f", Core2Color.z);
+		fprintf(runParametersFile, "\n Envelope1Color.x = %f", Envelope1Color.x);
+		fprintf(runParametersFile, "\n Envelope1Color.y = %f", Envelope1Color.y);
+		fprintf(runParametersFile, "\n Envelope1Color.z = %f", Envelope1Color.z);
+		fprintf(runParametersFile, "\n Envelope2Color.x = %f", Envelope2Color.x);
+		fprintf(runParametersFile, "\n Envelope2Color.y = %f", Envelope2Color.y);
+		fprintf(runParametersFile, "\n Envelope2Color.z = %f", Envelope2Color.z);
+		fprintf(runParametersFile, "\n RadiusCore1 = %f", DiameterCore1/2.0);
+		fprintf(runParametersFile, "\n RadiusCore2 = %f", DiameterCore2/2.0);
 	fclose(runParametersFile);
 }
 
@@ -1053,14 +1144,14 @@ void drawPictureSeperate()
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	glColor3d(1.0,0.0,0.0);
+	glColor3d(Core1Color.x,Core1Color.y,Core1Color.z);
 	glPushMatrix();
 		glTranslatef(drawUnit*(PosCPU[0].x + seperation), drawUnit*PosCPU[0].y, drawUnit*PosCPU[0].z);
 		glutSolidSphere(drawUnit*DiameterCore1/2.0,10,10);
 	glPopMatrix();
 	
 	glPointSize(2.0);
-	glColor3d(1.0,1.0,0.0);
+	glColor3d(Envelope1Color.x,Envelope1Color.y,Envelope1Color.z);
 	glBegin(GL_POINTS);
  		for(int i = 0 + 1; i < NumberElementsStar1; i++)
 		{
@@ -1074,14 +1165,14 @@ void drawPictureSeperate()
 		glutWireSphere(drawUnit*DiameterStar1/2.0,10,10);
 	glPopMatrix();
 	
-	glColor3d(0.0,0.0,1.0);
+	glColor3d(Core2Color.x,Core2Color.y,Core2Color.z);
 	glPushMatrix();
 		glTranslatef(drawUnit*(PosCPU[NumberElementsStar1].x - seperation), drawUnit*PosCPU[NumberElementsStar1].y, drawUnit*PosCPU[NumberElementsStar1].z);
 		glutSolidSphere(drawUnit*DiameterCore2/2.0,10,10);
 	glPopMatrix();
 	
 	glPointSize(2.0);
-	glColor3d(1.0,0.6,0.0);
+	glColor3d(Envelope2Color.x,Envelope2Color.y,Envelope2Color.z);
 	glBegin(GL_POINTS);
  		for(int i = NumberElementsStar1 + 1; i < NumberElements; i++)
 		{
@@ -1337,12 +1428,15 @@ void recordStarStats()
 	starStatsFile = fopen("FilesFromBuild/StarBuildStats", "wb");
 		fprintf(starStatsFile, " The conversion parameters to take you to and from our units to kilograms, kilometers, seconds follow\n");
 		fprintf(starStatsFile, " Mass in our units is the mass of an element. In other words the mass of an element is one.\n");
-		fprintf(starStatsFile, " Length in our units is the starting diameter of an element. In other words the staring base diameter of an element is one.\n");
+		fprintf(starStatsFile, " Length in our units is the diameter of an element. In other words the diameter of an element is one.\n");
 		fprintf(starStatsFile, " Time in our units is set so that the universal gravitational constant is 1.");
 		fprintf(starStatsFile, "\n ");
 		fprintf(starStatsFile, "\n Our length unit is this many kilometers: %e", SystemLengthConverterToKilometers);
 		fprintf(starStatsFile, "\n Our mass unit is this many kilograms: %e", SystemMassConverterToKilograms);
-		fprintf(starStatsFile, "\n Our time unit is this many seconds: %e or days %e", SystemTimeConverterToSeconds, SystemTimeConverterToSeconds/(60*60*24));
+		fprintf(starStatsFile, "\n Our time unit is this many seconds: %e or days %e\n\n", SystemTimeConverterToSeconds, SystemTimeConverterToSeconds/(60*60*24));
+		
+		fprintf(starStatsFile, "\n Our time step is this many of our units %f", Dt);
+		fprintf(starStatsFile, "\n Our time step is this many second: %e or hours: %e\n\n", Dt*SystemTimeConverterToSeconds, Dt*SystemTimeConverterToSeconds/(60.0*60.0));
 		
 		averagePlasmaPressure1 = getAveragePlasmaPressure(1);
 		averagePlasmaPressure2 = getAveragePlasmaPressure(2);
@@ -1454,7 +1548,7 @@ void control()
 	for(int i = 0; i < RawStarDampLevels; i++)
 	{
 		damp = RawStarDampAmount - float(i)*RawStarDampAmount/((float)RawStarDampLevels);
-		printf("\n Damping raw stars interation %d out of %d", i, RawStarDampLevels);
+		printf("\n Damping raw stars interation %d out of %d", i+1, RawStarDampLevels);
 		starNbody(time, damp, Dt, gPUsUsed);
 	}
 	

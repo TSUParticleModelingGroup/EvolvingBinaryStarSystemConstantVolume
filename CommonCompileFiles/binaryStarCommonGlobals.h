@@ -60,4 +60,15 @@ int DrawRate;
 //How often to print the time to the termminal in days.
 float PrintRate;
 
+float3 Core1Color;
+float3 Core2Color;
+float3 Envelope1Color;
+float3 Envelope2Color;
+
+//Need radius of the cores for drawing.
+float RadiusCore1;
+float RadiusCore2;
+
+
+
 

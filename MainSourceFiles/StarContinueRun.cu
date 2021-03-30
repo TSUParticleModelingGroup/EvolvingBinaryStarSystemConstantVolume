@@ -63,6 +63,39 @@ void openAndReadFiles()
 		
 		getline(data,name,'=');
 		data >> PrintRate;
+		
+		getline(data,name,'=');
+		data >> Core1Color.x;
+		getline(data,name,'=');
+		data >> Core1Color.y;
+		getline(data,name,'=');
+		data >> Core1Color.z;
+		
+		getline(data,name,'=');
+		data >> Core2Color.x;
+		getline(data,name,'=');
+		data >> Core2Color.y;
+		getline(data,name,'=');
+		data >> Core2Color.z;
+		
+		getline(data,name,'=');
+		data >> Envelope1Color.x;
+		getline(data,name,'=');
+		data >> Envelope1Color.y;
+		getline(data,name,'=');
+		data >> Envelope1Color.z;
+		
+		getline(data,name,'=');
+		data >> Envelope2Color.x;
+		getline(data,name,'=');
+		data >> Envelope2Color.y;
+		getline(data,name,'=');
+		data >> Envelope2Color.z;
+		
+		getline(data,name,'=');
+		data >> RadiusCore1;
+		getline(data,name,'=');
+		data >> RadiusCore2;
 	}
 	else
 	{

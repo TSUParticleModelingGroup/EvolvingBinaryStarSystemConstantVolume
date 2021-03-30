@@ -83,6 +83,23 @@ void createAndLoadFolderForNewBranchRun()
 	fclose(fileOut);
 	system("chmod 755 ./ContinueRun");
 	
+	fileIn = fopen("../ContinueFiles/Viewer", "rb");
+	if(fileIn == NULL)
+	{
+		printf("\n\n The ContinueFiles/Viewer file does not exist\n\n");
+		exit(0);
+	}
+	fseek (fileIn , 0 , SEEK_END);
+  	sizeOfFile = ftell(fileIn);
+  	rewind (fileIn);
+  	buffer = (char*)malloc(sizeof(char)*sizeOfFile);
+  	fread (buffer, 1, sizeOfFile, fileIn);
+	fileOut = fopen("Viewer", "wb");
+	fwrite (buffer, 1, sizeOfFile, fileOut);
+	fclose(fileIn);
+	fclose(fileOut);
+	system("chmod 755 ./Viewer");
+	
 	fileIn = fopen("../FilesFromBuild/RunParameters", "rb");
 	if(fileIn == NULL)
 	{
@@ -152,6 +169,39 @@ void readAndSetRunParameters()
 		
 		getline(data,name,'=');
 		data >> PrintRate;
+		
+		getline(data,name,'=');
+		data >> Core1Color.x;
+		getline(data,name,'=');
+		data >> Core1Color.y;
+		getline(data,name,'=');
+		data >> Core1Color.z;
+		
+		getline(data,name,'=');
+		data >> Core2Color.x;
+		getline(data,name,'=');
+		data >> Core2Color.y;
+		getline(data,name,'=');
+		data >> Core2Color.z;
+		
+		getline(data,name,'=');
+		data >> Envelope1Color.x;
+		getline(data,name,'=');
+		data >> Envelope1Color.y;
+		getline(data,name,'=');
+		data >> Envelope1Color.z;
+		
+		getline(data,name,'=');
+		data >> Envelope2Color.x;
+		getline(data,name,'=');
+		data >> Envelope2Color.y;
+		getline(data,name,'=');
+		data >> Envelope2Color.z;
+		
+		getline(data,name,'=');
+		data >> RadiusCore1;
+		getline(data,name,'=');
+		data >> RadiusCore2;
 	}
 	else
 	{

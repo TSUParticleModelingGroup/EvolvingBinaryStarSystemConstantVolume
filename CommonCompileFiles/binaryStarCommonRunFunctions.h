@@ -38,25 +38,25 @@ void drawPicture()
 	//Drawing the cores spheres
 	glPushMatrix();
 		glTranslatef(drawUnit*(PosCPU[0].x - CenterOfView.x), drawUnit*(PosCPU[0].y - CenterOfView.y), drawUnit*(PosCPU[0].z - CenterOfView.z));
-		glColor3d(1.0,0.0,0.0);
+		glColor3d(Core1Color.x,Core1Color.y,Core1Color.z);
 		glutSolidSphere(drawUnit*ForceCPU[0].w/2.0,20,20);  // force.w holds the diameter of an element
 	glPopMatrix();
 	
 	glPushMatrix();
 		glTranslatef(drawUnit*(PosCPU[NumberElementsStar1].x - CenterOfView.x), drawUnit*(PosCPU[NumberElementsStar1].y - CenterOfView.y), drawUnit*(PosCPU[NumberElementsStar1].z - CenterOfView.z));
-		glColor3d(0.0,0.0,1.0);
+		glColor3d(Core2Color.x,Core2Color.y,Core2Color.z);
 		glutSolidSphere(drawUnit*ForceCPU[NumberElementsStar1].w/2.0,20,20);
 	glPopMatrix();
 	
 	//Drawing all the elements as points
 	glBegin(GL_POINTS);
 		glPointSize(5.0);
-		glColor3d(1.0,1.0,0.0);
+		glColor3d(Envelope1Color.x,Envelope1Color.y,Envelope1Color.z);
  		for(int i = 0; i < NumberElementsStar1; i++)
 		{
 			glVertex3f(drawUnit*(PosCPU[i].x - CenterOfView.x), drawUnit*(PosCPU[i].y - CenterOfView.y), drawUnit*(PosCPU[i].z - CenterOfView.z));
 		}
-		glColor3d(1.0,0.6,0.0);
+		glColor3d(Envelope2Color.x,Envelope2Color.y,Envelope2Color.z);
 		for(int i = NumberElementsStar1; i < NumberElements; i++)
 		{
 			glVertex3f(drawUnit*(PosCPU[i].x - CenterOfView.x), drawUnit*(PosCPU[i].y - CenterOfView.y), drawUnit*(PosCPU[i].z - CenterOfView.z));

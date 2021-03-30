@@ -25,7 +25,7 @@ Mass of the core of stars 2 in fraction of the Sun's mass:
 MassOfCore2 = 0.33;
 
 The total number of elements used in the simulation 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288: should be a power of 2.
-NumberOfElements = 4096;
+NumberOfElements = 1024;
 
 Initial spin direction vectors and angular velocity in revolutions per hour of the Star 1:
 InitialSpin1.x = 0.0;
@@ -41,8 +41,8 @@ InitialSpin2.w = 0.1;
 
 Starting point for the Plasma presure. This will be in units of kilograms*kilometersE-1*secondE-2.
 Typical values (5.8e13 if n is 1024), (5.25e13 if n is 16384), (4.83e13 if n is 32768), (4.49e13 if n is 65536).
-PushBackPlasma1 = 2.0e15;
-PushBackPlasma2 = 2.0e15;
+PushBackPlasma1 = 3.0e13;
+PushBackPlasma2 = 3.0e13;
 
 Multiplier on how much past gravity the cores will push back.
 PushBackCoreMult1 = 2.0;
@@ -87,4 +87,21 @@ DrawRate = 10;
 
 How often to print the time to the terminal in Days.
 PrintTime = 1;
+
+How the stars will be colored
+Core1Color.x = 1.0;
+Core1Color.y = 0.0;
+Core1Color.z = 0.0;
+
+Core2Color.x = 1.0;
+Core2Color.y = 1.0;
+Core2Color.z = 1.0;
+
+Envelope1Color.x = 1.0;
+Envelope1Color.x = 1.0;
+Envelope1Color.x = 0.0;
+
+Envelope2Color.x = 1.0;
+Envelope2Color.x = 0.6;
+Envelope2Color.x = 0.0;
 

@@ -14,6 +14,10 @@ echo "StarContinueRun compile start"
 nvcc StarContinueRun.cu -o StarContinueRun.exe -lglut -lGL -lGLU -lm --use_fast_math
 echo "StarContinueRun compile end"
 
+echo "Viewer compile start"
+nvcc Viewer.cu -o Viewer.exe -lglut -lGL -lGLU -lm --use_fast_math
+echo "Viewer compile end"
+
 rm -r ../ExecutableFiles
 
 mkdir ../ExecutableFiles
@@ -21,8 +25,10 @@ mkdir ../ExecutableFiles
 mv StarBuilder.exe ../ExecutableFiles
 mv StarBranchRun.exe ../ExecutableFiles
 mv StarContinueRun.exe ../ExecutableFiles
+mv Viewer.exe ../ExecutableFiles
 
 cd ..
 chmod 777 ./BuildStars
 chmod 777 ./BranchAndContinueFiles/BranchRun
 chmod 777 ./BranchAndContinueFiles/ContinueRun
+chmod 777 ./BranchAndContinueFiles/Viewer
